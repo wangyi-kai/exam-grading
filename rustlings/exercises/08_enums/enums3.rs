@@ -1,6 +1,3 @@
-use std::os::macos::raw::stat;
-use crate::Message::Quit;
-
 struct Point {
     x: u64,
     y: u64,
