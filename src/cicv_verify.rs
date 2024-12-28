@@ -32,7 +32,7 @@ pub async fn cicv_verify(app_state: &mut AppState) -> Result<()> {
     let exercises = app_state.exercises().to_vec();
     let mut handles = vec![];
     for exercise in &exercises {
-        let exercise_name = exercise.name;
+        let exercise_name = exercise.name.clone();
         let mut app_state = app_state.clone();
         let handle = task::spawn(async move {
             let start = Instant::now();
