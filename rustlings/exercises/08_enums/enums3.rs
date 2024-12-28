@@ -50,25 +50,11 @@ impl State {
         // TODO: Create a match expression to process the different message
         // variants using the methods defined above.
         match message {
-            Message::Resize {width, height} => {
-                self.width = width;
-                self.height = height;
-            }
-            Message::Move(point) => {
-                self.position.x = point.x;
-                self.position.y = point.y;
-            }
-            Message::Echo(s) => {
-                self.message = s;
-            }
-            Message::ChangeColor(r, g, b) => {
-                self.color.0 = r;
-                self.color.1 = g;
-                self.color.2 = b;
-            }
-            Quit => {
-                self.quit = true;
-            }
+            Message::Resize {width, height} => self.resize(width, height),
+            Message::Move(point) => self.move_position(point),
+            Message::Echo(s) => self.echo(s),
+            Message::ChangeColor(r, g, b) => self.change_color(r, g, b),
+            Message::Quit => self.quit(),
         }
     }
 }
